@@ -6,8 +6,8 @@ import phonenumbers
 def set_field_new_building_in_floor(apps, schema_editor):
     Flats = apps.get_model('property', 'Flat')
     for flat in Flats.objects.all():
-        tel_owner = flat.owners_phonenumber
-        phone_number = phonenumbers.parse(tel_owner, "RU")
+        owner_phone = flat.owners_phonenumber
+        phone_number = phonenumbers.parse(owner_phone, "RU")
         if not phonenumbers.is_possible_number(phone_number):
             error_str = "Телефон {0} содержит неправильное колво цифр"
             print(error_str)
